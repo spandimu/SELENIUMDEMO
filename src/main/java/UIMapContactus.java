@@ -8,5 +8,9 @@ public class UIMapContactus {
     public static final String MESSAGE_XPATH = "//textarea[@placeholder='Message']";
 
     public static final String CLEAR_XPATH = "//a[@class='clear-form']";
+    public static final String SUBSCRIBE_XPATH = "(//input[@name='email'])[1]";
+    public static final String SUBSCRIBE_BTN_XPATH = "//input[@value='Subscribe']";
+
+
 
 }

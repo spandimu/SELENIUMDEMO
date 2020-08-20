@@ -1,17 +1,12 @@
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 public class BaseClass extends Driverscript{
 
@@ -22,18 +17,19 @@ public class BaseClass extends Driverscript{
         this.driver =  setDriver();
     }
 
-    @BeforeTest
+    @BeforeSuite
     void setup(){
         driver = getDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.seleniumframework.com/Practiceform/");
     }
 
-    public WebElement webElementXpath(String xpath){
+    public WebElement webElementXpath(String xpath)
+    {
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement webElementLinkText(String linkText){
+    public WebElement webElementLinkText(String linkText)
+    {
         return driver.findElement(By.linkText(linkText));
     }
 
@@ -43,11 +39,15 @@ public class BaseClass extends Driverscript{
 //        FileUtils.copyFileToDirectory(srcFile,new File(ClassLoader.g));
     }
 
+    public boolean isElementDisplayed(String xpath) {
+        return webElementXpath(xpath).isDisplayed();
+    }
+
     public WebDriver getDriver(){
         return driver;
     }
 
-    @AfterTest
+    @AfterSuite
     void teardown(){
         driver.quit();
     }
